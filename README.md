@@ -32,6 +32,14 @@ Memory modes:
 - `--memory readwrite` (retrieve + evaluate/write)
 - `--memory readwrite_cache` (also caches tool results in the state DB)
 
+## Share reports (GitHub Pages)
+
+- Local build:
+  - `pnpm ia scenarios run --mock-llm`
+  - `pnpm pages:build` (outputs `site/`)
+- CI deploy: `.github/workflows/pages.yml` builds a static dashboard and deploys it to GitHub Pages on pushes to `main`.
+  - Optional: set Actions secret `OPENROUTER_API_KEY` to run scenarios with a real LLM (keeps the key off the frontend).
+
 ## Config
 
 Copy `.env.example` → `.env` and fill in one provider.

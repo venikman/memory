@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Insight Agents — Reports</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__title">Insight Agents — Reports</div>
+      <div class="header__meta" id="buildInfo"></div>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <div class="row row--wrap">
+          <div class="field">
+            <label for="reportSelect">Report</label>
+            <select id="reportSelect"></select>
+          </div>
+          <div class="field field--grow">
+            <label>Scenario</label>
+            <div class="muted" id="scenarioMeta">—</div>
+          </div>
+          <div class="field">
+            <label>JSON</label>
+            <a id="downloadLink" class="link" href="#" target="_blank" rel="noreferrer">Download</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Aggregates</h2>
+        <div class="tableWrap">
+          <table class="table" id="aggregateTable">
+            <thead>
+              <tr>
+                <th>Config</th>
+                <th>Avg quality</th>
+                <th>Q-Acc rate</th>
+                <th>Tool calls</th>
+                <th>Cached</th>
+                <th>P90 latency</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Runs</h2>
+        <div class="tableWrap">
+          <table class="table" id="runsTable">
+            <thead>
+              <tr>
+                <th>Config</th>
+                <th>Step</th>
+                <th>Query</th>
+                <th>Run ID</th>
+                <th>Tool calls</th>
+                <th>Cached</th>
+                <th>Latency</th>
+                <th>Quality</th>
+                <th>Correct</th>
+                <th>Complete</th>
+                <th>Relevant</th>
+                <th>Q-Acc</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="muted">
+        Generated from scenario reports in <code>reports/</code>. This site is static (no server).
+      </div>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

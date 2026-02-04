@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
+    "pages:build": "node scripts/build-pages.mjs",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "ia": "pnpm --filter @ia/cli dev"
   }
 }
-
