@@ -40,15 +40,15 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Run scenarios (real LLM)
-        if: ${{ secrets.OPENROUTER_API_KEY != '' }}
+      - name: Run scenarios
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: pnpm ia scenarios run --repeat 2 --configs baseline,read,readwrite,readwrite_cache
-
-      - name: Run scenarios (mock LLM)
-        if: ${{ secrets.OPENROUTER_API_KEY == '' }}
-        run: pnpm ia scenarios run --mock-llm --repeat 2 --configs baseline,read,readwrite,readwrite_cache
+        run: |
+          if [ -n "$OPENROUTER_API_KEY" ]; then
+            pnpm ia scenarios run --repeat 2 --configs baseline,read,readwrite,readwrite_cache
+          else
+            pnpm ia scenarios run --mock-llm --repeat 2 --configs baseline,read,readwrite,readwrite_cache
+          fi
 
       - name: Build Pages
         run: node scripts/build-pages.mjs
