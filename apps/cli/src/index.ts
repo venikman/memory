@@ -63,7 +63,7 @@ function loadLlmClient(opts: { mock?: boolean; fakeMode?: "always-correct" | "ba
   const openRouterKey = process.env.OPENROUTER_API_KEY;
   if (openRouterKey) {
     const openRouterBaseUrl = process.env.OPENROUTER_BASE_URL ?? "https://openrouter.ai/api/v1";
-    const model = process.env.CHAT_MODEL ?? process.env.OPENROUTER_MODEL ?? "grok-4.1-fast";
+    const model = process.env.CHAT_MODEL ?? process.env.OPENROUTER_MODEL ?? "x-ai/grok-4.1-fast";
     return new OpenAICompatLLMClient({ baseUrl: openRouterBaseUrl, model, apiKey: openRouterKey });
   }
 

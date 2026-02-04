@@ -47,7 +47,7 @@ Copy `.env.example` → `.env` and fill in one provider.
 OpenRouter (OpenAI-compatible):
 - `OPENROUTER_API_KEY`
 - `OPENROUTER_BASE_URL` (default `https://openrouter.ai/api/v1`)
-- `CHAT_MODEL` (default `grok-4.1-fast`)
+- `CHAT_MODEL` (default `x-ai/grok-4.1-fast`)
 
 LM Studio (OpenAI-compatible):
 - `LMSTUDIO_BASE_URL` (e.g. `http://localhost:1234/v1`)
