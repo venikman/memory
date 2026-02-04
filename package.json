@@ -1,0 +1,13 @@
+{
+  "name": "agentic-memory-ia",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "ia": "pnpm --filter @ia/cli dev"
+  }
+}
+

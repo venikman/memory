@@ -1,0 +1,7 @@
+.data/
+runs/
+reports/
+.env
+node_modules/
+dist/
+.DS_Store

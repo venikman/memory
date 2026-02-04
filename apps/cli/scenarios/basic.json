@@ -1,0 +1,17 @@
+{
+  "id": "basic",
+  "title": "Top products + follow-up",
+  "seed": 42,
+  "today": "2026-02-04",
+  "steps": [
+    {
+      "id": "top_sales_last_month",
+      "query": "What were the sales for my top 10 products last month?"
+    },
+    {
+      "id": "traffic_those_products",
+      "query": "Now show traffic (sessions) for those products last month."
+    }
+  ]
+}
+
