@@ -2,12 +2,39 @@
 
 This repo implements a small, self-contained recreation of the “Insight Agents” architecture with an explicit **agentic memory** layer (leverager + evaluator) and a CLI for running scenarios and comparing configs.
 
+Live demo: [https://venikman.github.io/memory/](https://venikman.github.io/memory/)
+
 It’s designed to be demoable + inspectable:
 - Local deterministic dataset (SQLite)
 - Tool-driven “tabular RAG”
 - Multi-agent orchestration (manager → planner/executor → generator)
 - Long-term memory (SQLite FTS) with leverager (read path) + evaluator (write path)
 - Run logs in `runs/` and scenario reports in `reports/`
+
+![Reports dashboard (GitHub Pages)](.github/assets/pages-screenshot.png)
+
+## Architecture at a glance
+
+```
+CLI
+  |
+Manager
+  |
+Planner/Executor  --->  Tools / Data
+  |
+  +--> Leverager (read) ---> Memory (SQLite FTS)
+  |                           ^
+  |                           |
+  |                    Evaluator (write)
+  |
+  +--> Insight Generator  ---> Narrative answer
+  +--> Data Presenter     ---> Deterministic answer
+```
+
+## Prerequisites
+
+- Node.js 22 (matches CI)
+- pnpm 10.28.0 (matches `package.json`)
 
 ## Quick start
 
@@ -32,8 +59,29 @@ Memory modes:
 - `--memory readwrite` (retrieve + evaluate/write)
 - `--memory readwrite_cache` (also caches tool results in the state DB)
 
+## Common commands
+
+| Command | Purpose |
+| --- | --- |
+| `pnpm ia scenarios run` | Run the scenario suite |
+| `pnpm ia ask "<question>"` | Ask an ad-hoc question |
+| `pnpm pages:build` | Build the static Pages site into `site/` |
+| `pnpm test` | Run tests across packages |
+| `pnpm typecheck` | Run type checks across packages |
+| `pnpm build` | Build all packages |
+
+## Repo layout
+
+- `apps/` — CLI and app entrypoints
+- `packages/` — core agents, memory, tools
+- `scripts/` — build and report helpers
+- `site/` — GitHub Pages output
+- `runs/` and `reports/` — generated artifacts
+- `.data/` — local SQLite DBs
+
 ## Share reports (GitHub Pages)
 
+- Live site: [https://venikman.github.io/memory/](https://venikman.github.io/memory/)
 - Local build:
   - `pnpm ia scenarios run --mock-llm`
   - `pnpm pages:build` (outputs `site/`)
